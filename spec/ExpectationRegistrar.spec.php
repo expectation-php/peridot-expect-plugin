@@ -9,12 +9,12 @@
  * with this source code in the file LICENSE.
  */
 
-use expectation\peridot\PeridotExpectation;
+use expectation\peridot\ExpectationRegistrar;
 use Prophecy\Prophet;
 use Prophecy\Argument;
 
 
-describe('PeridotExpectation', function() {
+describe('ExpectationRegistrar', function() {
 
     describe('#register', function() {
         beforeEach(function() {
@@ -26,7 +26,7 @@ describe('PeridotExpectation', function() {
                 Argument::any()
             )->shouldBeCalled();
 
-            $this->peridot = new PeridotExpectation();
+            $this->peridot = new ExpectationRegistrar();
             $this->peridot->register($emitter->reveal());
         });
         it('register expectation plugin', function() {
@@ -44,7 +44,7 @@ describe('PeridotExpectation', function() {
                 Argument::any()
             )->shouldBeCalled();
 
-            $this->peridot = new PeridotExpectation();
+            $this->peridot = new ExpectationRegistrar();
             $this->peridot->unregister($emitter->reveal());
         });
         it('unregister expectation plugin', function() {

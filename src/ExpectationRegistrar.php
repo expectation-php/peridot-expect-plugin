@@ -16,10 +16,10 @@ use Evenement\EventEmitterInterface;
 
 
 /**
- * Class PeridotExpectation
+ * Class ExpectationRegistrar
  * @package expectation\peridot
  */
-class PeridotExpectation implements RegistrarInterface
+class ExpectationRegistrar implements RegistrarInterface
 {
 
     /**
