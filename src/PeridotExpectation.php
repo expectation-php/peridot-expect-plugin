@@ -20,11 +20,23 @@ use Evenement\EventEmitterInterface;
 class PeridotExpectation
 {
 
-    public function register(EventEmitterInterface $emmiter)
+    /**
+     * @param EventEmitterInterface $emitter
+     */
+    public function register(EventEmitterInterface $emitter)
     {
+        $emitter->once('peridot.start', [$this, 'configure']);
     }
 
-    public function unregister(EventEmitterInterface $emmiter)
+    /**
+     * @param EventEmitterInterface $emitter
+     */
+    public function unregister(EventEmitterInterface $emitter)
+    {
+        $emitter->removeListener('peridot.start', [$this, 'configure']);
+    }
+
+    protected function configure()
     {
     }
 

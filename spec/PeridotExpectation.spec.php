@@ -9,7 +9,6 @@
  * with this source code in the file LICENSE.
  */
 
-use Evenement\EventEmitterInterface;
 use expectation\peridot\PeridotExpectation;
 use Prophecy\Prophet;
 use Prophecy\Argument;
@@ -24,7 +23,7 @@ describe('PeridotExpectation', function() {
             $emitter = $this->prophet->prophesize('Evenement\EventEmitterInterface');
             $emitter->once(
                 Argument::exact('peridot.start'),
-                Argument::type('callable')
+                Argument::any()
             )->shouldBeCalled();
 
             $this->peridot = new PeridotExpectation();
@@ -42,7 +41,7 @@ describe('PeridotExpectation', function() {
             $emitter = $this->prophet->prophesize('Evenement\EventEmitterInterface');
             $emitter->removeListener(
                 Argument::exact('peridot.start'),
-                Argument::type('callable')
+                Argument::any()
             )->shouldBeCalled();
 
             $this->peridot = new PeridotExpectation();
