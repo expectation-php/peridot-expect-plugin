@@ -1,5 +1,5 @@
 {
-    "name": "expectation/peridot",
+    "name": "expectation/peridot-expectation",
     "description": "Expectation for peridot",
     "keywords": [
         "expect", "assert", "test", "peridot"
@@ -8,6 +8,11 @@
         "php": ">=5.4.0",
         "peridot-php/peridot": "~1.4",
         "expectation/expectation": "dev-1.3.1-wip"
+    },
+    "require-dev": {
+        "cloak/cloak": "1.3.*",
+        "cloak/coverallskit": "1.3.*",
+        "phpspec/prophecy": "@stable"
     },
     "license": "MIT",
     "authors": [
@@ -18,10 +23,11 @@
     ],
     "autoload": {
         "psr-4": {
-            "expectation\\": "src/"
+            "expectation\\peridot\\": "src/"
         }
     },
     "scripts": {
+        "test": "vendor/bin/peridot spec"
     },
     "minimum-stability": "stable"
 }
