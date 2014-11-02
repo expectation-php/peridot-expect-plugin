@@ -9,9 +9,13 @@
  * with this source code in the file LICENSE.
  */
 
+
+use expectation\Expectation;
 use expectation\peridot\ExpectationRegistrar;
+use expectation\peridot\RegistrarInterface;
 use Prophecy\Prophet;
 use Prophecy\Argument;
+use Evenement\EventEmitter;
 
 
 describe('ExpectationRegistrar', function() {
@@ -31,6 +35,17 @@ describe('ExpectationRegistrar', function() {
         });
         it('register expectation plugin', function() {
             $this->prophet->checkPredictions();
+        });
+        context('when use configration file', function() {
+            beforeEach(function() {
+                $this->emitter = new EventEmitter();
+                $this->registrar = new ExpectationRegistrar(__DIR__ . '/fixture/config.php');
+                $this->registrar->register($this->emitter);
+                $this->emitter->emit(RegistrarInterface::START_EVENT);
+            });
+            it('load custom matchers', function() {
+                Expectation::expect(true)->toFixtureTrue();
+            });
         });
     });
 

@@ -53,7 +53,7 @@ class ExpectationRegistrar implements RegistrarInterface
         $emitter->removeListener(static::START_EVENT, [$this, 'configure']);
     }
 
-    protected function configure()
+    public function configure()
     {
         Expectation::configureWithFile($this->configurationFile);
     }
