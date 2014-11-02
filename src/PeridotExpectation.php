@@ -11,7 +11,9 @@
 
 namespace expectation\peridot;
 
+use expectation\Expectation;
 use Evenement\EventEmitterInterface;
+
 
 /**
  * Class PeridotExpectation
@@ -19,6 +21,21 @@ use Evenement\EventEmitterInterface;
  */
 class PeridotExpectation
 {
+
+    /**
+     * @var string
+     */
+    private $configurationFile;
+
+
+    /**
+     * @param string|null $configurationFile
+     */
+    public function __construct($configurationFile = null)
+    {
+        $this->configurationFile = $configurationFile;
+    }
+
 
     /**
      * @param EventEmitterInterface $emitter
@@ -38,6 +55,7 @@ class PeridotExpectation
 
     protected function configure()
     {
+        Expectation::configureWithFile($this->configurationFile);
     }
 
 }
