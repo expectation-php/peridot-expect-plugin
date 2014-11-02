@@ -1,0 +1,27 @@
+{
+    "name": "expectation/peridot",
+    "description": "Expectation for peridot",
+    "keywords": [
+        "expect", "assert", "test", "peridot"
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "peridot-php/peridot": "~1.4",
+        "expectation/expectation": "dev-1.3.1-wip"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Noritaka Horio",
+            "email": "holy.shared.design@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "expectation\\": "src/"
+        }
+    },
+    "scripts": {
+    },
+    "minimum-stability": "stable"
+}
