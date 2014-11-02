@@ -19,7 +19,7 @@ use Evenement\EventEmitterInterface;
  * Class PeridotExpectation
  * @package expectation\peridot
  */
-class PeridotExpectation
+class PeridotExpectation implements RegistrarInterface
 {
 
     /**
@@ -38,19 +38,19 @@ class PeridotExpectation
 
 
     /**
-     * @param EventEmitterInterface $emitter
+     * {@inheritdoc}
      */
     public function register(EventEmitterInterface $emitter)
     {
-        $emitter->once('peridot.start', [$this, 'configure']);
+        $emitter->once(static::START_EVENT, [$this, 'configure']);
     }
 
     /**
-     * @param EventEmitterInterface $emitter
+     * {@inheritdoc}
      */
     public function unregister(EventEmitterInterface $emitter)
     {
-        $emitter->removeListener('peridot.start', [$this, 'configure']);
+        $emitter->removeListener(static::START_EVENT, [$this, 'configure']);
     }
 
     protected function configure()
