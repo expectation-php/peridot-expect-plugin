@@ -19,22 +19,17 @@ use Evenement\EventEmitter;
 
 
 describe('ExpectationRegistrar', function() {
-
     describe('#register', function() {
-        beforeEach(function() {
-            $this->prophet = new Prophet();
-
-            $emitter = $this->prophet->prophesize('Evenement\EventEmitterInterface');
-            $emitter->once(
-                Argument::exact('peridot.start'),
-                Argument::any()
-            )->shouldBeCalled();
-
-            $this->peridot = new ExpectationRegistrar();
-            $this->peridot->register($emitter->reveal());
-        });
-        it('register expectation plugin', function() {
-            $this->prophet->checkPredictions();
+        context('when default', function() {
+            beforeEach(function() {
+                $this->emitter = new EventEmitter();
+                $this->registrar = new ExpectationRegistrar();
+                $this->registrar->register($this->emitter);
+                $this->emitter->emit(RegistrarInterface::START_EVENT);
+            });
+            it('load default matchers', function() {
+                Expectation::expect(true)->toBeTrue();
+            });
         });
         context('when use configration file', function() {
             beforeEach(function() {
@@ -45,6 +40,9 @@ describe('ExpectationRegistrar', function() {
             });
             it('load custom matchers', function() {
                 Expectation::expect(true)->toFixtureTrue();
+            });
+            it('load default matchers', function() {
+                Expectation::expect(true)->toBeTrue();
             });
         });
     });

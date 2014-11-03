@@ -55,7 +55,11 @@ class ExpectationRegistrar implements RegistrarInterface
 
     public function configure()
     {
-        Expectation::configureWithFile($this->configurationFile);
+        if (is_null($this->configurationFile)) {
+            Expectation::configure();
+        } else {
+            Expectation::configureWithFile($this->configurationFile);
+        }
     }
 
 }
