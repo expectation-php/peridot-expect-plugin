@@ -12,7 +12,8 @@
     "require-dev": {
         "cloak/cloak": "1.3.*",
         "cloak/coverallskit": "1.3.*",
-        "phpspec/prophecy": "@stable"
+        "phpspec/prophecy": "@stable",
+        "beberlei/assert": "2.0.*"
     },
     "license": "MIT",
     "authors": [

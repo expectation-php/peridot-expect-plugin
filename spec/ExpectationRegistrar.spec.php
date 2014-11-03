@@ -13,9 +13,8 @@
 use expectation\Expectation;
 use expectation\peridot\ExpectationRegistrar;
 use expectation\peridot\RegistrarInterface;
-use Prophecy\Prophet;
-use Prophecy\Argument;
 use Evenement\EventEmitter;
+use Assert\Assertion;
 
 
 describe('ExpectationRegistrar', function() {
@@ -46,22 +45,16 @@ describe('ExpectationRegistrar', function() {
             });
         });
     });
-
     describe('#unregister', function() {
         beforeEach(function() {
-            $this->prophet = new Prophet();
-
-            $emitter = $this->prophet->prophesize('Evenement\EventEmitterInterface');
-            $emitter->removeListener(
-                Argument::exact('peridot.start'),
-                Argument::any()
-            )->shouldBeCalled();
-
-            $this->peridot = new ExpectationRegistrar();
-            $this->peridot->unregister($emitter->reveal());
+            $this->emitter = new EventEmitter();
+            $this->registrar = new ExpectationRegistrar(__DIR__ . '/fixture/config.php');
+            $this->registrar->register($this->emitter);
+            $this->registrar->unregister($this->emitter);
+            $this->listeners = $this->emitter->listeners(RegistrarInterface::START_EVENT);
         });
         it('unregister expectation plugin', function() {
-            $this->prophet->checkPredictions();
+            Assertion::count($this->listeners, 0);
         });
     });
 
