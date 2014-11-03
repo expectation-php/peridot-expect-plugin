@@ -42,7 +42,7 @@ class ExpectationRegistrar implements RegistrarInterface
      */
     public function register(EventEmitterInterface $emitter)
     {
-        $emitter->once(static::START_EVENT, [$this, 'configure']);
+        $emitter->on(static::START_EVENT, [$this, 'configure']);
     }
 
     /**
