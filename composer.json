@@ -7,7 +7,7 @@
     "require": {
         "php": ">=5.4.0",
         "peridot-php/peridot": "~1.4",
-        "expectation/expectation": "dev-1.3.1-wip"
+        "expectation/expectation": "1.3.*"
     },
     "require-dev": {
         "cloak/cloak": "1.3.*",
