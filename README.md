@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/expectation-php/peridot-expectation.png?label=ready&title=Ready)](https://waffle.io/expectation-php/peridot-expectation)
 peridot-expectation
 ===================
 
