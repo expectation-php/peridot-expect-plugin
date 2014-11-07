@@ -42,7 +42,7 @@ class ExpectationPlugin implements RegistrarInterface
      */
     public function register(EventEmitterInterface $emitter)
     {
-        $emitter->on(static::START_EVENT, [$this, 'configure']);
+        $emitter->on(static::START_EVENT, [$this, 'onPeridotStart']);
     }
 
     /**
@@ -50,10 +50,11 @@ class ExpectationPlugin implements RegistrarInterface
      */
     public function unregister(EventEmitterInterface $emitter)
     {
-        $emitter->removeListener(static::START_EVENT, [$this, 'configure']);
+        $emitter->removeListener(static::START_EVENT, [$this, 'onPeridotStart']);
     }
 
-    public function configure()
+
+    public function onPeridotStart()
     {
         if (is_null($this->configurationFile)) {
             Expectation::configure();
