@@ -45,19 +45,19 @@ describe('ExpectationPlugin', function() {
         context('when default', function() {
             beforeEach(function() {
                 $this->emitter = new EventEmitter();
-                $this->registrar = new ExpectationPlugin();
-                $this->registrar->register($this->emitter);
+                ExpectationPlugin::create()->register($this->emitter);
                 $this->emitter->emit(RegistrarInterface::START_EVENT);
             });
             it('load default matchers', function() {
                 Expectation::expect(true)->toBeTrue();
             });
         });
-        context('when use configration file', function() {
+        context('when use configuration file', function() {
             beforeEach(function() {
                 $this->emitter = new EventEmitter();
-                $this->registrar = new ExpectationPlugin(__DIR__ . '/fixture/config.php');
-                $this->registrar->register($this->emitter);
+                ExpectationPlugin::createWithConfig(__DIR__ . '/fixture/config.php')
+                    ->register($this->emitter);
+
                 $this->emitter->emit(RegistrarInterface::START_EVENT);
             });
             it('load custom matchers', function() {
