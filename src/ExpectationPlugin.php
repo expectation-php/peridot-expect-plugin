@@ -25,15 +25,15 @@ class ExpectationPlugin implements RegistrarInterface
     /**
      * @var string
      */
-    private $configurationFile;
+    private $configFilePath;
 
 
     /**
      * @param string|null $configurationFile
      */
-    public function __construct($configurationFile = null)
+    public function __construct($configFilePath = null)
     {
-        $this->configurationFile = $configurationFile;
+        $this->configFilePath = $configFilePath;
     }
 
     /**
@@ -45,12 +45,12 @@ class ExpectationPlugin implements RegistrarInterface
     }
 
     /**
-     * @param string $configurationFile
+     * @param string $configFilePath
      * @return ExpectationPlugin
      */
-    public static function createWithConfig($configurationFile)
+    public static function createWithConfig($configFilePath)
     {
-        return new self($configurationFile);
+        return new self($configFilePath);
     }
 
     /**
@@ -58,7 +58,15 @@ class ExpectationPlugin implements RegistrarInterface
      */
     public function getConfigurationFilePath()
     {
-        return $this->configurationFile;
+        return $this->configFilePath;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEmptyConfig()
+    {
+        return is_null($this->getConfigurationFilePath());
     }
 
     /**
@@ -71,10 +79,10 @@ class ExpectationPlugin implements RegistrarInterface
 
     public function onPeridotStart()
     {
-        if (is_null($this->configurationFile)) {
+        if ($this->isEmptyConfig()) {
             Expectation::configure();
         } else {
-            Expectation::configureWithFile($this->configurationFile);
+            Expectation::configureWithFile($this->getConfigurationFilePath());
         }
     }
 
