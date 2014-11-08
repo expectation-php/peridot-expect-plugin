@@ -36,7 +36,7 @@ describe('ExpectationPlugin', function() {
         it('return plugin instance', function() {
             Assertion::isInstanceOf($this->plugin, 'expectation\peridot\ExpectationPlugin');
         });
-        it('assign configration file', function() {
+        it('assign configuration file', function() {
             Assertion::same($this->plugin->getConfigurationFilePath(), $this->path);
         });
     });
