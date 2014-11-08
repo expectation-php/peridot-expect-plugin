@@ -10,7 +10,6 @@
         "expectation/expectation": "1.3.*"
     },
     "require-dev": {
-        "cloak/cloak": "1.3.*",
         "cloak/coverallskit": "1.3.*",
         "phpspec/prophecy": "@stable",
         "beberlei/assert": "2.0.*"
@@ -28,7 +27,8 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/peridot spec"
+        "test": "vendor/bin/peridot spec",
+        "coveralls": "php script/coveralls.php"
     },
     "minimum-stability": "stable"
 }
