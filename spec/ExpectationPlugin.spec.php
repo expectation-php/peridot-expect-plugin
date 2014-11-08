@@ -44,12 +44,16 @@ describe('ExpectationPlugin', function() {
     describe('#register', function() {
         context('when default', function() {
             beforeEach(function() {
-                $this->emitter = new EventEmitter();
-                ExpectationPlugin::create()->register($this->emitter);
-                $this->emitter->emit(RegistrarInterface::START_EVENT);
+                $emitter = new EventEmitter();
+                ExpectationPlugin::create()->register($emitter);
+                $emitter->emit(RegistrarInterface::START_EVENT);
+                $this->listeners = $emitter->listeners(RegistrarInterface::START_EVENT);
             });
             it('load default matchers', function() {
                 Expectation::expect(true)->toBeTrue();
+            });
+            it('removed from the listener', function() {
+                Assertion::count($this->listeners, 0);
             });
         });
         context('when use configuration file', function() {
@@ -66,18 +70,9 @@ describe('ExpectationPlugin', function() {
             it('load default matchers', function() {
                 Expectation::expect(true)->toBeTrue();
             });
-        });
-    });
-    describe('#unregister', function() {
-        beforeEach(function() {
-            $this->emitter = new EventEmitter();
-            $this->registrar = new ExpectationPlugin(__DIR__ . '/fixture/config.php');
-            $this->registrar->register($this->emitter);
-            $this->registrar->unregister($this->emitter);
-            $this->listeners = $this->emitter->listeners(RegistrarInterface::START_EVENT);
-        });
-        it('unregister expectation plugin', function() {
-            Assertion::count($this->listeners, 0);
+            it('removed from the listener', function() {
+                Assertion::count($this->listeners, 0);
+            });
         });
     });
 

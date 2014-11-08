@@ -66,17 +66,8 @@ class ExpectationPlugin implements RegistrarInterface
      */
     public function register(EventEmitterInterface $emitter)
     {
-        $emitter->on(static::START_EVENT, [$this, 'onPeridotStart']);
+        $emitter->once(static::START_EVENT, [ $this, 'onPeridotStart' ]);
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function unregister(EventEmitterInterface $emitter)
-    {
-        $emitter->removeListener(static::START_EVENT, [$this, 'onPeridotStart']);
-    }
-
 
     public function onPeridotStart()
     {

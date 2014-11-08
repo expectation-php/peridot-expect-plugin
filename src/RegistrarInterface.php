@@ -28,9 +28,4 @@ interface RegistrarInterface
      */
     public function register(EventEmitterInterface $emitter);
 
-    /**
-     * @param EventEmitterInterface $emitter
-     */
-    public function unregister(EventEmitterInterface $emitter);
-
 }
