@@ -18,6 +18,29 @@ use Assert\Assertion;
 
 
 describe('ExpectationPlugin', function() {
+
+    describe('#create', function() {
+        beforeEach(function() {
+            $this->plugin = ExpectationPlugin::create();
+        });
+        it('return plugin instance', function() {
+            Assertion::isInstanceOf($this->plugin, 'expectation\peridot\ExpectationPlugin');
+        });
+    });
+
+    describe('#createWithConfig', function() {
+        beforeEach(function() {
+            $this->path = __DIR__ . '/fixture/config.php';
+            $this->plugin = ExpectationPlugin::createWithConfig($this->path);
+        });
+        it('return plugin instance', function() {
+            Assertion::isInstanceOf($this->plugin, 'expectation\peridot\ExpectationPlugin');
+        });
+        it('assign configration file', function() {
+            Assertion::same($this->plugin->getConfigurationFilePath(), $this->path);
+        });
+    });
+
     describe('#register', function() {
         context('when default', function() {
             beforeEach(function() {

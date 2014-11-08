@@ -36,6 +36,30 @@ class ExpectationPlugin implements RegistrarInterface
         $this->configurationFile = $configurationFile;
     }
 
+    /**
+     * @return ExpectationPlugin
+     */
+    public static function create()
+    {
+        return new self();
+    }
+
+    /**
+     * @param string $configurationFile
+     * @return ExpectationPlugin
+     */
+    public static function createWithConfig($configurationFile)
+    {
+        return new self($configurationFile);
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getConfigurationFilePath()
+    {
+        return $this->configurationFile;
+    }
 
     /**
      * {@inheritdoc}
