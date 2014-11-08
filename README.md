@@ -20,7 +20,7 @@ Then please run the composer install.
 ```php
 {
     "require-dev": {
-        "expectation/peridot-expectation": "1.0.0"
+        "expectation/peridot-expectation": "1.1.0"
     }
 }
 ```
@@ -34,7 +34,34 @@ It can be used by simply append the set to **peridot.php**.
 use expectation\peridot\ExpectationPlugin;
 
 return function(EventEmitterInterface $emitter) {
-	$plugin = new ExpectationPlugin();
-	$plugin->register($emitter);
+    ExpectationPlugin::create()->register($emitter);
 };
 ```
+
+or 
+
+```php
+use expectation\peridot\ExpectationPlugin;
+
+return function(EventEmitterInterface $emitter) {
+    ExpectationPlugin::createWithConfig('expectation.php')->register($emitter);
+};
+```
+
+Examples of spec
+------------------
+
+You can easily use in the spec file.
+
+```php
+describe('Example', function() {
+    describe('#create', function() {
+        it('return instance', function() {
+            expect(Example::create())->toBeAnInstanceOf('Example')
+        });
+    });
+});
+```
+
+
+
