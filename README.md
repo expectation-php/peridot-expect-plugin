@@ -20,7 +20,7 @@ Then please run the composer install.
 ```php
 {
     "require-dev": {
-        "expectation/peridot-expectation": "1.1.0"
+        "expectation/peridot-expectation": "1.1.1"
     }
 }
 ```
@@ -40,13 +40,19 @@ return function(EventEmitterInterface $emitter) {
 
 or 
 
+How to configure can be found [here](https://github.com/expectation-php/expectation/wiki/Custom-matchers).
+
+
 ```php
 use expectation\peridot\ExpectationPlugin;
 
 return function(EventEmitterInterface $emitter) {
-    ExpectationPlugin::createWithConfig('expectation.php')->register($emitter);
+    ExpectationPlugin::createWithConfig('composer.json')->register($emitter);
 };
 ```
+
+
+
 
 Examples of spec
 ------------------
