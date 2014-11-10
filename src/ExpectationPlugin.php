@@ -25,41 +25,64 @@ class ExpectationPlugin implements RegistrarInterface
     /**
      * @var string
      */
-    private $configurationFile;
+    private $configFilePath;
 
 
     /**
      * @param string|null $configurationFile
      */
-    public function __construct($configurationFile = null)
+    public function __construct($configFilePath = null)
     {
-        $this->configurationFile = $configurationFile;
+        $this->configFilePath = $configFilePath;
     }
 
+    /**
+     * @return ExpectationPlugin
+     */
+    public static function create()
+    {
+        return new self();
+    }
+
+    /**
+     * @param string $configFilePath
+     * @return ExpectationPlugin
+     */
+    public static function createWithConfig($configFilePath)
+    {
+        return new self($configFilePath);
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getConfigurationFilePath()
+    {
+        return $this->configFilePath;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEmptyConfig()
+    {
+        return is_null($this->getConfigurationFilePath());
+    }
 
     /**
      * {@inheritdoc}
      */
     public function register(EventEmitterInterface $emitter)
     {
-        $emitter->on(static::START_EVENT, [$this, 'onPeridotStart']);
+        $emitter->once(static::START_EVENT, [ $this, 'onPeridotStart' ]);
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function unregister(EventEmitterInterface $emitter)
-    {
-        $emitter->removeListener(static::START_EVENT, [$this, 'onPeridotStart']);
-    }
-
 
     public function onPeridotStart()
     {
-        if (is_null($this->configurationFile)) {
+        if ($this->isEmptyConfig()) {
             Expectation::configure();
         } else {
-            Expectation::configureWithFile($this->configurationFile);
+            Expectation::configureWithFile($this->getConfigurationFilePath());
         }
     }
 
