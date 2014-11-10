@@ -5,7 +5,7 @@ Expectation for [peridot](https://github.com/peridot-php/peridot)
 
 [![Build Status](https://travis-ci.org/expectation-php/peridot-expectation.svg)](https://travis-ci.org/expectation-php/peridot-expectation)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/expectation-php/peridot-expectation/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/expectation-php/peridot-expectation/?branch=master)
-[![Coverage Status](https://coveralls.io/repos/expectation-php/peridot-expectation/badge.png?branch=master)](https://coveralls.io/r/expectation-php/peridot-expectation?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/expectation-php/peridot-expectation/badge.png?branch=master)](https://coveralls.io/r/expectation-php/peridot-expectation?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/5456291c22b4fba1150002ae/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5456291c22b4fba1150002ae)
 [![Stories in Ready](https://badge.waffle.io/expectation-php/peridot-expectation.png?label=ready&title=Ready)](https://waffle.io/expectation-php/peridot-expectation)
 
@@ -20,7 +20,7 @@ Then please run the composer install.
 ```php
 {
     "require-dev": {
-        "expectation/peridot-expectation": "1.0.0"
+        "expectation/peridot-expectation": "1.1.0"
     }
 }
 ```
@@ -34,7 +34,34 @@ It can be used by simply append the set to **peridot.php**.
 use expectation\peridot\ExpectationPlugin;
 
 return function(EventEmitterInterface $emitter) {
-	$plugin = new ExpectationPlugin();
-	$plugin->register($emitter);
+    ExpectationPlugin::create()->register($emitter);
 };
 ```
+
+or 
+
+```php
+use expectation\peridot\ExpectationPlugin;
+
+return function(EventEmitterInterface $emitter) {
+    ExpectationPlugin::createWithConfig('expectation.php')->register($emitter);
+};
+```
+
+Examples of spec
+------------------
+
+You can easily use in the spec file.
+
+```php
+describe('Example', function() {
+    describe('#create', function() {
+        it('return instance', function() {
+            expect(Example::create())->toBeAnInstanceOf('Example')
+        });
+    });
+});
+```
+
+
+
