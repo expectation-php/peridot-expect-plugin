@@ -30,7 +30,7 @@ describe('ExpectationPlugin', function() {
 
     describe('#createWithConfig', function() {
         beforeEach(function() {
-            $this->path = __DIR__ . '/fixture/config.php';
+            $this->path = __DIR__ . '/fixture/composer.json';
             $this->plugin = ExpectationPlugin::createWithConfig($this->path);
         });
         it('return plugin instance', function() {
@@ -59,7 +59,7 @@ describe('ExpectationPlugin', function() {
         context('when use configuration file', function() {
             beforeEach(function() {
                 $this->emitter = new EventEmitter();
-                ExpectationPlugin::createWithConfig(__DIR__ . '/fixture/config.php')
+                ExpectationPlugin::createWithConfig(__DIR__ . '/fixture/composer.json')
                     ->register($this->emitter);
 
                 $this->emitter->emit(RegistrarInterface::START_EVENT);
