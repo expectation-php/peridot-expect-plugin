@@ -14,7 +14,7 @@ return function(EventEmitterInterface $emitter) {
 
     $analyzer = Analyzer::factory(function(ConfigurationBuilder $builder) {
         $reporter = new CompositeReporter([
-            new LcovReporter(__DIR__ . '/report.lcov'),
+            new LcovReporter(__DIR__ . '/script/report.lcov'),
             new TextReporter(),
             new ProcessingTimeReporter()
         ]);

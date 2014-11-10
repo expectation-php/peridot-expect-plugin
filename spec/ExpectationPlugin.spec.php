@@ -18,23 +18,50 @@ use Assert\Assertion;
 
 
 describe('ExpectationPlugin', function() {
+
+    describe('#create', function() {
+        beforeEach(function() {
+            $this->plugin = ExpectationPlugin::create();
+        });
+        it('return plugin instance', function() {
+            Assertion::isInstanceOf($this->plugin, 'expectation\peridot\ExpectationPlugin');
+        });
+    });
+
+    describe('#createWithConfig', function() {
+        beforeEach(function() {
+            $this->path = __DIR__ . '/fixture/composer.json';
+            $this->plugin = ExpectationPlugin::createWithConfig($this->path);
+        });
+        it('return plugin instance', function() {
+            Assertion::isInstanceOf($this->plugin, 'expectation\peridot\ExpectationPlugin');
+        });
+        it('assign configuration file', function() {
+            Assertion::same($this->plugin->getConfigurationFilePath(), $this->path);
+        });
+    });
+
     describe('#register', function() {
         context('when default', function() {
             beforeEach(function() {
-                $this->emitter = new EventEmitter();
-                $this->registrar = new ExpectationPlugin();
-                $this->registrar->register($this->emitter);
-                $this->emitter->emit(RegistrarInterface::START_EVENT);
+                $emitter = new EventEmitter();
+                ExpectationPlugin::create()->register($emitter);
+                $emitter->emit(RegistrarInterface::START_EVENT);
+                $this->listeners = $emitter->listeners(RegistrarInterface::START_EVENT);
             });
             it('load default matchers', function() {
                 Expectation::expect(true)->toBeTrue();
             });
+            it('removed from the listener', function() {
+                Assertion::count($this->listeners, 0);
+            });
         });
-        context('when use configration file', function() {
+        context('when use configuration file', function() {
             beforeEach(function() {
                 $this->emitter = new EventEmitter();
-                $this->registrar = new ExpectationPlugin(__DIR__ . '/fixture/config.php');
-                $this->registrar->register($this->emitter);
+                ExpectationPlugin::createWithConfig(__DIR__ . '/fixture/composer.json')
+                    ->register($this->emitter);
+
                 $this->emitter->emit(RegistrarInterface::START_EVENT);
             });
             it('load custom matchers', function() {
@@ -43,18 +70,9 @@ describe('ExpectationPlugin', function() {
             it('load default matchers', function() {
                 Expectation::expect(true)->toBeTrue();
             });
-        });
-    });
-    describe('#unregister', function() {
-        beforeEach(function() {
-            $this->emitter = new EventEmitter();
-            $this->registrar = new ExpectationPlugin(__DIR__ . '/fixture/config.php');
-            $this->registrar->register($this->emitter);
-            $this->registrar->unregister($this->emitter);
-            $this->listeners = $this->emitter->listeners(RegistrarInterface::START_EVENT);
-        });
-        it('unregister expectation plugin', function() {
-            Assertion::count($this->listeners, 0);
+            it('removed from the listener', function() {
+                Assertion::count($this->listeners, 0);
+            });
         });
     });
 
