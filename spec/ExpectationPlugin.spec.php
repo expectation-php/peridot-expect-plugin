@@ -10,7 +10,6 @@
  */
 
 
-use expectation\Expectation;
 use expectation\peridot\ExpectationPlugin;
 use expectation\peridot\RegistrarInterface;
 use Evenement\EventEmitter;
