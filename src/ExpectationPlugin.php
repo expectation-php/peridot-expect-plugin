@@ -84,6 +84,8 @@ class ExpectationPlugin implements RegistrarInterface
         } else {
             Expectation::configureWithFile($this->getConfigurationFilePath());
         }
+
+        require_once __DIR__  . '/DSL.php';
     }
 
 }

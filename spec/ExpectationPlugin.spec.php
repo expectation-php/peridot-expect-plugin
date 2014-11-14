@@ -10,7 +10,6 @@
  */
 
 
-use expectation\Expectation;
 use expectation\peridot\ExpectationPlugin;
 use expectation\peridot\RegistrarInterface;
 use Evenement\EventEmitter;
@@ -50,7 +49,7 @@ describe('ExpectationPlugin', function() {
                 $this->listeners = $emitter->listeners(RegistrarInterface::START_EVENT);
             });
             it('load default matchers', function() {
-                Expectation::expect(true)->toBeTrue();
+                expect(true)->toBeTrue();
             });
             it('removed from the listener', function() {
                 Assertion::count($this->listeners, 0);
@@ -65,10 +64,10 @@ describe('ExpectationPlugin', function() {
                 $this->emitter->emit(RegistrarInterface::START_EVENT);
             });
             it('load custom matchers', function() {
-                Expectation::expect(true)->toFixtureTrue();
+                expect(true)->toFixtureTrue();
             });
             it('load default matchers', function() {
-                Expectation::expect(true)->toBeTrue();
+                expect(true)->toBeTrue();
             });
             it('removed from the listener', function() {
                 Assertion::count($this->listeners, 0);
