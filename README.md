@@ -20,7 +20,7 @@ Then please run the composer install.
 ```php
 {
     "require-dev": {
-        "expectation/peridot-expectation": "1.1.1"
+        "expectation/peridot-expectation": "1.1.1.1"
     }
 }
 ```
