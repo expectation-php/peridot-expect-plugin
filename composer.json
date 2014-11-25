@@ -2,13 +2,12 @@
     "name": "expectation/peridot-expectation",
     "description": "Expectation for peridot",
     "keywords": [
-        "expect", "assert", "test", "peridot"
+        "expect", "assert", "test", "peridot", "peridot-php", "plugin"
     ],
     "require": {
         "php": ">=5.4.0",
         "peridot-php/peridot": "~1.8",
-        "expectation/expectation": "1.4.*",
-        "noodlehaus/config": "dev-master"
+        "expectation/expectation": "~1.4"
     },
     "require-dev": {
         "cloak/cloak": "1.4.*",
@@ -34,3 +33,4 @@
     },
     "minimum-stability": "stable"
 }
+
