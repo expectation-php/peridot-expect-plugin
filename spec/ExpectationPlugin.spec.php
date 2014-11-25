@@ -40,11 +40,11 @@ describe('ExpectationPlugin', function() {
         });
     });
 
-    describe('#register', function() {
+    describe('#registerTo', function() {
         context('when default', function() {
             beforeEach(function() {
                 $emitter = new EventEmitter();
-                ExpectationPlugin::create()->register($emitter);
+                ExpectationPlugin::create()->registerTo($emitter);
                 $emitter->emit(RegistrarInterface::START_EVENT);
                 $this->listeners = $emitter->listeners(RegistrarInterface::START_EVENT);
             });
@@ -59,7 +59,7 @@ describe('ExpectationPlugin', function() {
             beforeEach(function() {
                 $this->emitter = new EventEmitter();
                 ExpectationPlugin::createWithConfig(__DIR__ . '/fixture/composer.json')
-                    ->register($this->emitter);
+                    ->registerTo($this->emitter);
 
                 $this->emitter->emit(RegistrarInterface::START_EVENT);
             });
@@ -76,3 +76,4 @@ describe('ExpectationPlugin', function() {
     });
 
 });
+
