@@ -3,7 +3,7 @@ peridot-expectation
 
 Expectation for [peridot](https://github.com/peridot-php/peridot)
 
-[![Build Status](https://travis-ci.org/expectation-php/peridot-expectation.svg)](https://travis-ci.org/expectation-php/peridot-expectation)
+[![Build Status](https://travis-ci.org/expectation-php/peridot-expectation.svg?branch=master)](https://travis-ci.org/expectation-php/peridot-expectation)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/expectation-php/peridot-expectation/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/expectation-php/peridot-expectation/?branch=master)
 [![Coverage Status](https://coveralls.io/repos/expectation-php/peridot-expectation/badge.png?branch=master)](https://coveralls.io/r/expectation-php/peridot-expectation?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/5456291c22b4fba1150002ae/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5456291c22b4fba1150002ae)
