@@ -2,40 +2,17 @@
 
 use Evenement\EventEmitterInterface;
 use cloak\Analyzer;
-use cloak\ConfigurationBuilder;
-use cloak\result\File;
-use cloak\reporter\CompositeReporter;
-use cloak\reporter\LcovReporter;
-use cloak\reporter\MarkdownReporter;
-use cloak\reporter\TextReporter;
-use cloak\reporter\ProcessingTimeReporter;
+use cloak\configuration\ConfigurationLoader;
 
 return function(EventEmitterInterface $emitter) {
 
-    $analyzer = Analyzer::factory(function(ConfigurationBuilder $builder) {
-        $reporter = new CompositeReporter([
-            new LcovReporter(__DIR__ . '/script/report.lcov'),
-            new TextReporter(),
-            new ProcessingTimeReporter()
-        ]);
-
-        $includeCallback = function(File $file) {
-            return $file->matchPath('src');
-        };
-
-        $excludeCallback = function(File $file) {
-            return $file->matchPath('vendor') || $file->matchPath('spec');
-        };
-
-        $builder->reporter($reporter)
-            ->includeFile($includeCallback)
-            ->excludeFile($excludeCallback);
-    });
+    $loader = new ConfigurationLoader();
+    $configuration = $loader->loadConfiguration('cloak.toml');
+    $analyzer = new Analyzer($configuration);
 
     $emitter->on('peridot.start', function() use ($analyzer) {
         $analyzer->start();
     });
-
     $emitter->on('peridot.end', function() use ($analyzer) {
         $analyzer->stop();
     });
