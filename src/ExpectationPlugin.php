@@ -72,7 +72,7 @@ class ExpectationPlugin implements RegistrarInterface
     /**
      * {@inheritdoc}
      */
-    public function register(EventEmitterInterface $emitter)
+    public function registerTo(EventEmitterInterface $emitter)
     {
         $emitter->once(static::START_EVENT, [ $this, 'onPeridotStart' ]);
     }
@@ -84,6 +84,8 @@ class ExpectationPlugin implements RegistrarInterface
         } else {
             Expectation::configureWithFile($this->getConfigurationFilePath());
         }
+
+        require_once __DIR__  . '/DSL.php';
     }
 
 }

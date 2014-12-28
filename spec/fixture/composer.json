@@ -1,0 +1,17 @@
+{
+    "name": "example/example",
+    "description": "",
+    "keywords": [],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "license": "MIT",
+    "extra": {
+        "expectation": {
+            "namespaces": {
+                "expectation\\peridot\\spec\\fixture\\matcher": "matcher"
+            }
+        }
+    },
+    "minimum-stability": "stable"
+}

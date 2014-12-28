@@ -10,7 +10,6 @@
  */
 
 
-use expectation\Expectation;
 use expectation\peridot\ExpectationPlugin;
 use expectation\peridot\RegistrarInterface;
 use Evenement\EventEmitter;
@@ -30,7 +29,7 @@ describe('ExpectationPlugin', function() {
 
     describe('#createWithConfig', function() {
         beforeEach(function() {
-            $this->path = __DIR__ . '/fixture/config.php';
+            $this->path = __DIR__ . '/fixture/composer.json';
             $this->plugin = ExpectationPlugin::createWithConfig($this->path);
         });
         it('return plugin instance', function() {
@@ -41,16 +40,16 @@ describe('ExpectationPlugin', function() {
         });
     });
 
-    describe('#register', function() {
+    describe('#registerTo', function() {
         context('when default', function() {
             beforeEach(function() {
                 $emitter = new EventEmitter();
-                ExpectationPlugin::create()->register($emitter);
+                ExpectationPlugin::create()->registerTo($emitter);
                 $emitter->emit(RegistrarInterface::START_EVENT);
                 $this->listeners = $emitter->listeners(RegistrarInterface::START_EVENT);
             });
             it('load default matchers', function() {
-                Expectation::expect(true)->toBeTrue();
+                expect(true)->toBeTrue();
             });
             it('removed from the listener', function() {
                 Assertion::count($this->listeners, 0);
@@ -59,16 +58,16 @@ describe('ExpectationPlugin', function() {
         context('when use configuration file', function() {
             beforeEach(function() {
                 $this->emitter = new EventEmitter();
-                ExpectationPlugin::createWithConfig(__DIR__ . '/fixture/config.php')
-                    ->register($this->emitter);
+                ExpectationPlugin::createWithConfig(__DIR__ . '/fixture/composer.json')
+                    ->registerTo($this->emitter);
 
                 $this->emitter->emit(RegistrarInterface::START_EVENT);
             });
             it('load custom matchers', function() {
-                Expectation::expect(true)->toFixtureTrue();
+                expect(true)->toFixtureTrue();
             });
             it('load default matchers', function() {
-                Expectation::expect(true)->toBeTrue();
+                expect(true)->toBeTrue();
             });
             it('removed from the listener', function() {
                 Assertion::count($this->listeners, 0);
@@ -77,3 +76,4 @@ describe('ExpectationPlugin', function() {
     });
 
 });
+
