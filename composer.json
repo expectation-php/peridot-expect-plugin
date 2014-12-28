@@ -11,7 +11,7 @@
     },
     "require-dev": {
         "cloak/cloak": "~1.4",
-        "cloak/coverallskit": "~1.3",
+        "cloak/coverallskit": "~1.4",
         "phpspec/prophecy": "~1.3",
         "beberlei/assert": "~2.3",
         "codegyre/robo": "~0.4"
