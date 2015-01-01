@@ -1,8 +1,8 @@
 <?php
 
 use \Robo\Tasks;
-use coverallskit\Configuration;
-use coverallskit\ReportBuilder;
+use \coverallskit\robo\CoverallsKitTasks;
+
 
 /**
  * Class RoboFile
@@ -10,16 +10,21 @@ use coverallskit\ReportBuilder;
 class RoboFile extends Tasks
 {
 
+    use CoverallsKitTasks;
+
+
     public function specAll()
     {
         return $this->taskExec('vendor/bin/peridot spec')->run();
     }
 
-    public function specCoveralls()
+    public function coverallsUpload()
     {
-        $configuration = Configuration::loadFromFile('coveralls.toml');
-        $builder = ReportBuilder::fromConfiguration($configuration);
-        $builder->build()->save()->upload();
+        $result = $this->taskCoverallsKit()
+            ->configure('coveralls.toml')
+            ->run();
+
+        return $result;
     }
 
 }
