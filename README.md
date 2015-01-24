@@ -3,12 +3,12 @@ peridot-expectation
 
 Expectation for [peridot](https://github.com/peridot-php/peridot)
 
-[![Latest Stable Version](https://poser.pugx.org/expectation/peridot-expectation/v/stable.svg)](https://packagist.org/packages/expectation/peridot-expectation) [![Total Downloads](https://poser.pugx.org/expectation/peridot-expectation/downloads.svg)](https://packagist.org/packages/expectation/peridot-expectation) [![Latest Unstable Version](https://poser.pugx.org/expectation/peridot-expectation/v/unstable.svg)](https://packagist.org/packages/expectation/peridot-expectation) [![License](https://poser.pugx.org/expectation/peridot-expectation/license.svg)](https://packagist.org/packages/expectation/peridot-expectation)
+[![Latest Stable Version](https://poser.pugx.org/expectation/peridot-expectation/v/stable.svg)](https://packagist.org/packages/expectation/peridot-expectation) [![Latest Unstable Version](https://poser.pugx.org/expectation/peridot-expectation/v/unstable.svg)](https://packagist.org/packages/expectation/peridot-expectation)
+[![Dependency Status](https://www.versioneye.com/user/projects/5456291c22b4fba1150002ae/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5456291c22b4fba1150002ae)
 
 [![Build Status](https://travis-ci.org/expectation-php/peridot-expectation.svg?branch=master)](https://travis-ci.org/expectation-php/peridot-expectation)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/expectation-php/peridot-expectation/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/expectation-php/peridot-expectation/?branch=master)
 [![Coverage Status](https://coveralls.io/repos/expectation-php/peridot-expectation/badge.png?branch=master)](https://coveralls.io/r/expectation-php/peridot-expectation?branch=master)
-[![Dependency Status](https://www.versioneye.com/user/projects/5456291c22b4fba1150002ae/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5456291c22b4fba1150002ae)
 [![Stories in Ready](https://badge.waffle.io/expectation-php/peridot-expectation.png?label=ready&title=Ready)](https://waffle.io/expectation-php/peridot-expectation)
 
 Installation
