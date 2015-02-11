@@ -6,11 +6,11 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "peridot-php/peridot": "~1.11",
+        "peridot-php/peridot": "~1.12",
         "expectation/expectation": "~1.4"
     },
     "require-dev": {
-        "cloak/cloak": "~1.4",
+        "cloak/cloak": "~1.5",
         "cloak/robo-coveralls-kit": "~1.0",
         "robo-peridot/robo-peridot": "~1.0",
         "phpspec/prophecy": "~1.3",
