@@ -26,7 +26,13 @@
     ],
     "autoload": {
         "psr-4": {
-            "expectation\\peridot\\": "src/"
+            "expect\\peridot\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "expect\\peridot\\spec\\fixture\\": "spec/fixture",
+            "expect\\peridot\\spec\\fixture\\matcher\\": "spec/fixture/matcher"
         }
     },
     "scripts": {

@@ -1,0 +1,3 @@
+packages = [
+  "expect\\peridot\\spec\\fixture\\FixturePackage"
+]

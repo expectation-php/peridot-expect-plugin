@@ -9,17 +9,18 @@
  * with this source code in the file LICENSE.
  */
 
-namespace expectation\peridot;
+namespace expect\peridot;
 
-use expectation\Expectation;
+use expect\Expect;
+use expect\configurator\FileConfigurator;
 use Evenement\EventEmitterInterface;
 
 
 /**
- * Class ExpectationPlugin
- * @package expectation\peridot
+ * Class ExpectPlugin
+ * @package expect\peridot
  */
-class ExpectationPlugin implements RegistrarInterface
+class ExpectPlugin implements Registrar
 {
 
     /**
@@ -37,7 +38,7 @@ class ExpectationPlugin implements RegistrarInterface
     }
 
     /**
-     * @return ExpectationPlugin
+     * @return ExpectPlugin
      */
     public static function create()
     {
@@ -46,7 +47,7 @@ class ExpectationPlugin implements RegistrarInterface
 
     /**
      * @param string $configFilePath
-     * @return ExpectationPlugin
+     * @return ExpectPlugin
      */
     public static function createWithConfig($configFilePath)
     {
@@ -80,9 +81,10 @@ class ExpectationPlugin implements RegistrarInterface
     public function onPeridotStart()
     {
         if ($this->isEmptyConfig()) {
-            Expectation::configure();
+            Expect::configure();
         } else {
-            Expectation::configureWithFile($this->getConfigurationFilePath());
+            $configurator = new FileConfigurator($this->getConfigurationFilePath());
+            Expect::configure($configurator);
         }
 
         require_once __DIR__  . '/DSL.php';
