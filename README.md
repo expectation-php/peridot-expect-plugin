@@ -4,8 +4,7 @@ peridot-expect-plugin
 Expectation for [peridot](https://github.com/peridot-php/peridot)
 
 [![Latest Stable Version](https://poser.pugx.org/expect/peridot-expect-plugin/v/stable.svg)](https://packagist.org/packages/expectation/peridot-expect-plugin) [![Latest Unstable Version](https://poser.pugx.org/expect/peridot-expect-plugin/v/unstable.svg)](https://packagist.org/packages/expectation/peridot-expect-plugin)
-[![Dependency Status](https://www.versioneye.com/user/projects/5456291c22b4fba1150002ae/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5456291c22b4fba1150002ae)
-
+[![Dependency Status](https://www.versioneye.com/user/projects/551fa0b6971f7843390002ef/badge.svg?style=flat)](https://www.versioneye.com/user/projects/551fa0b6971f7843390002ef)
 [![Build Status](https://travis-ci.org/expectation-php/peridot-expect-plugin.svg?branch=master)](https://travis-ci.org/expectation-php/peridot-expect-plugin)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/expectation-php/peridot-expect-plugin/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/expectation-php/peridot-expect-plugin/?branch=master)
 [![Coverage Status](https://coveralls.io/repos/expectation-php/peridot-expect-plugin/badge.png?branch=master)](https://coveralls.io/r/expectation-php/peridot-expect-plugin?branch=master)
