@@ -1,5 +1,5 @@
 {
-    "name": "expectation/peridot-expectation",
+    "name": "expect/peridot-expect-plugin",
     "description": "Expectation for peridot",
     "keywords": [
         "expect", "assert", "test", "peridot", "peridot-php", "plugin"
