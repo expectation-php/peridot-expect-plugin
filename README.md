@@ -40,7 +40,7 @@ return function(EventEmitterInterface $emitter) {
 };
 ```
 
-or 
+or
 
 How to configure can be found [here](https://github.com/expectation-php/expectation/wiki/Custom-matchers).
 
@@ -49,7 +49,7 @@ How to configure can be found [here](https://github.com/expectation-php/expectat
 use expectation\peridot\ExpectationPlugin;
 
 return function(EventEmitterInterface $emitter) {
-    ExpectationPlugin::createWithConfig('composer.json')->registerTo($emitter);
+    ExpectationPlugin::createWithConfig('.expect.toml')->registerTo($emitter);
 };
 ```
 
@@ -70,4 +70,3 @@ describe('Example', function() {
     });
 });
 ```
-
