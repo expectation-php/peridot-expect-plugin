@@ -10,30 +10,30 @@
  */
 
 
-use expectation\peridot\ExpectationPlugin;
-use expectation\peridot\RegistrarInterface;
+use expect\peridot\ExpectPlugin;
+use expect\peridot\Registrar;
 use Evenement\EventEmitter;
 use Assert\Assertion;
 
 
-describe('ExpectationPlugin', function() {
+describe('ExpectPlugin', function() {
 
     describe('#create', function() {
         beforeEach(function() {
-            $this->plugin = ExpectationPlugin::create();
+            $this->plugin = ExpectPlugin::create();
         });
         it('return plugin instance', function() {
-            Assertion::isInstanceOf($this->plugin, 'expectation\peridot\ExpectationPlugin');
+            Assertion::isInstanceOf($this->plugin, 'expect\peridot\ExpectPlugin');
         });
     });
 
     describe('#createWithConfig', function() {
         beforeEach(function() {
-            $this->path = __DIR__ . '/fixture/composer.json';
-            $this->plugin = ExpectationPlugin::createWithConfig($this->path);
+            $this->path = __DIR__ . '/fixture/.expect.toml';
+            $this->plugin = ExpectPlugin::createWithConfig($this->path);
         });
         it('return plugin instance', function() {
-            Assertion::isInstanceOf($this->plugin, 'expectation\peridot\ExpectationPlugin');
+            Assertion::isInstanceOf($this->plugin, 'expect\peridot\ExpectPlugin');
         });
         it('assign configuration file', function() {
             Assertion::same($this->plugin->getConfigurationFilePath(), $this->path);
@@ -44,9 +44,9 @@ describe('ExpectationPlugin', function() {
         context('when default', function() {
             beforeEach(function() {
                 $emitter = new EventEmitter();
-                ExpectationPlugin::create()->registerTo($emitter);
-                $emitter->emit(RegistrarInterface::START_EVENT);
-                $this->listeners = $emitter->listeners(RegistrarInterface::START_EVENT);
+                ExpectPlugin::create()->registerTo($emitter);
+                $emitter->emit(Registrar::START_EVENT);
+                $this->listeners = $emitter->listeners(Registrar::START_EVENT);
             });
             it('load default matchers', function() {
                 expect(true)->toBeTrue();
@@ -58,10 +58,10 @@ describe('ExpectationPlugin', function() {
         context('when use configuration file', function() {
             beforeEach(function() {
                 $this->emitter = new EventEmitter();
-                ExpectationPlugin::createWithConfig(__DIR__ . '/fixture/composer.json')
+                ExpectPlugin::createWithConfig(__DIR__ . '/fixture/.expect.toml')
                     ->registerTo($this->emitter);
 
-                $this->emitter->emit(RegistrarInterface::START_EVENT);
+                $this->emitter->emit(Registrar::START_EVENT);
             });
             it('load custom matchers', function() {
                 expect(true)->toFixtureTrue();
@@ -76,4 +76,3 @@ describe('ExpectationPlugin', function() {
     });
 
 });
-

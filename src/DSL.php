@@ -9,13 +9,13 @@
  * with this source code in the file LICENSE.
  */
 
-use expectation\Expectation;
+use expect\Expect;
 
 /**
  * @param mixed $actual
- * @return \expectation\Evaluator
+ * @return \expect\Context
  */
 function expect($actual)
 {
-    return Expectation::expect($actual);
+    return Expect::that($actual);
 }

@@ -9,19 +9,19 @@
  * with this source code in the file LICENSE.
  */
 
-namespace expectation\peridot;
+namespace expect\peridot;
 
 use Evenement\EventEmitterInterface;
 
 
 /**
- * Interface RegistrarInterface
- * @package expectation\peridot
+ * Interface Registrar
+ * @package expect\peridot
  */
-interface RegistrarInterface
+interface Registrar
 {
 
-    const START_EVENT = 'peridot.start';
+    const START_EVENT = 'runner.start';
 
     /**
      * @param EventEmitterInterface $emitter
@@ -29,4 +29,3 @@ interface RegistrarInterface
     public function registerTo(EventEmitterInterface $emitter);
 
 }
-
