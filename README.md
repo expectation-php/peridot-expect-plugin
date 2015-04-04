@@ -1,5 +1,5 @@
-peridot-expectation
-===================
+peridot-expect-plugin
+======================================
 
 Expectation for [peridot](https://github.com/peridot-php/peridot)
 
@@ -22,7 +22,7 @@ Then please run the composer install.
 ```php
 {
     "require-dev": {
-        "expectation/peridot-expectation": "1.2.0"
+        "expectation/peridot-expect-plugin": "2.0.0"
     }
 }
 ```
@@ -33,26 +33,25 @@ Basic usage
 It can be used by simply append the set to **peridot.php**.
 
 ```php
-use expectation\peridot\ExpectationPlugin;
+use expect\peridot\ExpectPlugin;
 
 return function(EventEmitterInterface $emitter) {
-    ExpectationPlugin::create()->registerTo($emitter);
+    ExpectPlugin::create()->registerTo($emitter);
 };
 ```
 
 or
 
-How to configure can be found [here](https://github.com/expectation-php/expectation/wiki/Custom-matchers).
+How to configure can be found [here](https://github.com/expectation-php/expect).
 
 
 ```php
-use expectation\peridot\ExpectationPlugin;
+use expect\peridot\ExpectPlugin;
 
 return function(EventEmitterInterface $emitter) {
-    ExpectationPlugin::createWithConfig('.expect.toml')->registerTo($emitter);
+    ExpectPlugin::createWithConfig('.expect.toml')->registerTo($emitter);
 };
 ```
-
 
 
 
