@@ -8,7 +8,7 @@ excludes = ["vendor", "spec"]
 
 
 [report]
-reportDirectory = "./tmp"
+reportDirectory = "."
 
 [report.coverageBounds]
 satisfactory = 80.0
