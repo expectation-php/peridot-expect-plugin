@@ -3,7 +3,7 @@ peridot-expect-plugin
 
 Expectation for [peridot](https://github.com/peridot-php/peridot)
 
-[![Latest Stable Version](https://poser.pugx.org/expectation/peridot-expect-plugin/v/stable.svg)](https://packagist.org/packages/expectation/peridot-expect-plugin) [![Latest Unstable Version](https://poser.pugx.org/expectation/peridot-expect-plugin/v/unstable.svg)](https://packagist.org/packages/expectation/peridot-expect-plugin)
+[![Latest Stable Version](https://poser.pugx.org/expect/peridot-expect-plugin/v/stable.svg)](https://packagist.org/packages/expectation/peridot-expect-plugin) [![Latest Unstable Version](https://poser.pugx.org/expect/peridot-expect-plugin/v/unstable.svg)](https://packagist.org/packages/expectation/peridot-expect-plugin)
 [![Dependency Status](https://www.versioneye.com/user/projects/5456291c22b4fba1150002ae/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5456291c22b4fba1150002ae)
 
 [![Build Status](https://travis-ci.org/expectation-php/peridot-expect-plugin.svg?branch=master)](https://travis-ci.org/expectation-php/peridot-expect-plugin)
