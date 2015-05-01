@@ -5,14 +5,14 @@
         "expect", "assert", "test", "peridot", "peridot-php", "plugin"
     ],
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.5.0",
         "peridot-php/peridot": "~1.15",
-        "expect/expect": "~0.6"
+        "expect/expect": "~1.0"
     },
     "require-dev": {
         "cloak/peridot-cloak-plugin": "~1.3",
-        "cloak/robo-coveralls-kit": "~1.1",
-        "robo-peridot/robo-peridot": "~1.1",
+        "cloak/robo-coveralls-kit": "~2.1",
+        "robo-peridot/robo-peridot": "~2.0",
         "phpspec/prophecy": "~1.4",
         "beberlei/assert": "~2.3",
         "codegyre/robo": "~0.5"
