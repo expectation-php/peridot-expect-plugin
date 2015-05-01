@@ -16,14 +16,14 @@ use Evenement\EventEmitter;
 use Assert\Assertion;
 
 
-describe('ExpectPlugin', function() {
+describe(ExpectPlugin::class, function() {
 
     describe('#create', function() {
         beforeEach(function() {
             $this->plugin = ExpectPlugin::create();
         });
         it('return plugin instance', function() {
-            Assertion::isInstanceOf($this->plugin, 'expect\peridot\ExpectPlugin');
+            Assertion::isInstanceOf($this->plugin, ExpectPlugin::class);
         });
     });
 
@@ -33,7 +33,7 @@ describe('ExpectPlugin', function() {
             $this->plugin = ExpectPlugin::createWithConfig($this->path);
         });
         it('return plugin instance', function() {
-            Assertion::isInstanceOf($this->plugin, 'expect\peridot\ExpectPlugin');
+            Assertion::isInstanceOf($this->plugin, ExpectPlugin::class);
         });
         it('assign configuration file', function() {
             Assertion::same($this->plugin->getConfigurationFilePath(), $this->path);
