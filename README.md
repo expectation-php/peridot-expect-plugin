@@ -22,7 +22,7 @@ Then please run the composer install.
 ```php
 {
     "require-dev": {
-        "expectation/peridot-expect-plugin": "2.0.0"
+        "expectation/peridot-expect-plugin": "3.0.0"
     }
 }
 ```
