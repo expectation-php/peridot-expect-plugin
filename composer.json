@@ -14,8 +14,8 @@
         "cloak/robo-coveralls-kit": "~2.1",
         "holyshared/robo-peridot": "~2.0",
         "phpspec/prophecy": "~1.5",
-        "beberlei/assert": "~2.3",
-        "codegyre/robo": "~0.5"
+        "beberlei/assert": "~2.4",
+        "codegyre/robo": "~0.6"
     },
     "license": "MIT",
     "authors": [
