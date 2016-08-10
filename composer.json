@@ -5,17 +5,17 @@
         "expect", "assert", "test", "peridot", "peridot-php", "plugin"
     ],
     "require": {
-        "php": ">=5.5.0",
-        "peridot-php/peridot": "~1.16",
-        "expect/expect": "~1.0"
+        "php": ">=5.6.0",
+        "peridot-php/peridot": "~1.18",
+        "expect/expect": "~2.0"
     },
     "require-dev": {
         "cloak/peridot-cloak-plugin": "~2.0",
         "cloak/robo-coveralls-kit": "~2.1",
         "holyshared/robo-peridot": "~2.0",
-        "phpspec/prophecy": "~1.5",
-        "beberlei/assert": "~2.4",
-        "codegyre/robo": "~0.6"
+        "phpspec/prophecy": "~1.6",
+        "beberlei/assert": "~2.6",
+        "codegyre/robo": "~0.7"
     },
     "license": "MIT",
     "authors": [
